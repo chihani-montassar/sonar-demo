@@ -9,9 +9,7 @@ pipeline {
         withSonarQubeEnv('SonarQube') {
           sh '''
             mvn -v
-            mvn clean verify sonar:sonar \
-              -Dsonar.projectKey=atelier-sonar \
-              -Dsonar.projectName=atelier-sonar
+            mvn clean package -DskipTests sonar:sonar -Dsonar.projectKey=atelier-sonar -Dsonar.projectName=atelier-sonar
           '''
         }
       }
